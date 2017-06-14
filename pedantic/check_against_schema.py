@@ -212,10 +212,8 @@ def _parse_from_string(a_string):
 
 def _do_param_validation(param, schema):
     err_msg = ""
-    if isinstance(param, dict):
-        param = json.dumps(param)
     # if the parameter is a list, validate each element against the schema
-    elif isinstance(param, list):
+    if isinstance(param, list):
         for item in param:
             err_msg = "".join(
                 [err_msg, _do_param_validation(item, schema)]
